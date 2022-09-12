@@ -1,0 +1,89 @@
+---- Minecraft Crash Report ----
+// Hi. I'm Minecraft, and I'm a crashaholic.
+
+Time: 8/27/22 12:16 PM
+Description: Saving entity NBT
+
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at com.tiki.fantasiaabilities.data.capabilities.AbilitiesCapability$1.writeNBT(AbilitiesCapability.java:40) ~[?:?] {re:classloading}
+	at com.tiki.fantasiaabilities.data.capabilities.AbilitiesCapability$1.writeNBT(AbilitiesCapability.java:31) ~[?:?] {re:classloading}
+	at com.tiki.fantasiaabilities.data.capabilities.SerializableCapabilityProvider.serializeNBT(SerializableCapabilityProvider.java:27) ~[?:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityDispatcher.serializeNBT(CapabilityDispatcher.java:127) ~[forge:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityProvider.serializeCaps(CapabilityProvider.java:86) ~[forge:?] {re:classloading}
+	at net.minecraft.entity.Entity.saveWithoutId(Entity.java:1407) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.integrated.IntegratedPlayerList.save(IntegratedPlayerList.java:26) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.management.PlayerList.saveAll(PlayerList.java:636) ~[forge:?] {re:classloading}
+	at net.minecraft.server.integrated.IntegratedServer.tickServer(IntegratedServer.java:72) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:642) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:232) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_231] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at com.tiki.fantasiaabilities.data.capabilities.AbilitiesCapability$1.writeNBT(AbilitiesCapability.java:40) ~[?:?] {re:classloading}
+	at com.tiki.fantasiaabilities.data.capabilities.AbilitiesCapability$1.writeNBT(AbilitiesCapability.java:31) ~[?:?] {re:classloading}
+	at com.tiki.fantasiaabilities.data.capabilities.SerializableCapabilityProvider.serializeNBT(SerializableCapabilityProvider.java:27) ~[?:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityDispatcher.serializeNBT(CapabilityDispatcher.java:127) ~[forge:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityProvider.serializeCaps(CapabilityProvider.java:86) ~[forge:?] {re:classloading}
+-- Entity being saved --
+Details:
+	Entity Type: minecraft:player (net.minecraft.entity.player.ServerPlayerEntity)
+	Entity ID: 235
+	Entity Name: Dev
+	Entity's Exact location: -144.50, 70.00, 225.50
+	Entity's Block location: World: (-145,70,225), Chunk: (at 15,4,1 in -10,14; contains blocks -160,0,224 to -145,255,239), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Entity's Momentum: 0.00, -0.08, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.entity.Entity.saveWithoutId(Entity.java:1407) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.integrated.IntegratedPlayerList.save(IntegratedPlayerList.java:26) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.management.PlayerList.saveAll(PlayerList.java:636) ~[forge:?] {re:classloading}
+	at net.minecraft.server.integrated.IntegratedServer.tickServer(IntegratedServer.java:72) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:642) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:232) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_231] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 1427587456 bytes (1361 MB) / 1906835456 bytes (1818 MB) up to 3799515136 bytes (3623 MB)
+	CPUs: 12
+	JVM Flags: 2 total; -XX:+IgnoreUnrecognizedVMOptions -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 8.0.9+86+master.3cf110c
+	ModLauncher launch target: fmluserdevclient
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		/mixin-0.8.2.jar mixin PLUGINSERVICE 
+		/eventbus-4.0.0.jar eventbus PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar object_holder_definalize PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar runtime_enum_extender PLUGINSERVICE 
+		/accesstransformers-3.0.1.jar accesstransformer PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar capability_inject_definalize PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar runtimedistcleaner PLUGINSERVICE 
+		/mixin-0.8.2.jar mixin TRANSFORMATIONSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar fml TRANSFORMATIONSERVICE 
+	FML: 36.2
+	Forge: net.minecraftforge:36.2.0
+	FML Language Providers: 
+		javafml@36.2
+		minecraft@1
+	Mod List: 
+		client-extra.jar                                  |Minecraft                     |minecraft                     |1.16.5              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		forge-1.16.5-36.2.0_mapped_official_1.16.5-recomp.|Forge                         |forge                         |36.2.0              |DONE      |Manifest: NOSIGNATURE
+		main                                              |Fantasia Abilities            |fantasiaabilities             |NONE                |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 9016f9ae-37d7-403f-b0ff-20e730a0141c
+	Player Count: 1 / 8; [ServerPlayerEntity['Dev'/235, l='ServerLevel[New World]', x=-144.50, y=70.00, z=225.50]]
+	Data Packs: vanilla, mod:forge, mod:fantasiaabilities
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'

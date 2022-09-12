@@ -1,0 +1,85 @@
+---- Minecraft Crash Report ----
+// This doesn't make any sense!
+
+Time: 8/16/22 4:13 PM
+Description: Saving entity NBT
+
+java.lang.IllegalArgumentException: Invalid null NBT value with key fantasiaabilities:abilities
+	at net.minecraft.nbt.CompoundNBT.put(CompoundNBT.java:108) ~[forge:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityDispatcher.serializeNBT(CapabilityDispatcher.java:127) ~[forge:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityProvider.serializeCaps(CapabilityProvider.java:86) ~[forge:?] {re:classloading}
+	at net.minecraft.entity.Entity.saveWithoutId(Entity.java:1407) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.integrated.IntegratedPlayerList.save(IntegratedPlayerList.java:26) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.management.PlayerList.saveAll(PlayerList.java:636) ~[forge:?] {re:classloading}
+	at net.minecraft.server.integrated.IntegratedServer.tickServer(IntegratedServer.java:72) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:642) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:232) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_231] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at net.minecraft.nbt.CompoundNBT.put(CompoundNBT.java:108) ~[forge:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityDispatcher.serializeNBT(CapabilityDispatcher.java:127) ~[forge:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityProvider.serializeCaps(CapabilityProvider.java:86) ~[forge:?] {re:classloading}
+-- Entity being saved --
+Details:
+	Entity Type: minecraft:player (net.minecraft.entity.player.ServerPlayerEntity)
+	Entity ID: 272
+	Entity Name: Dev
+	Entity's Exact location: 124.50, 70.00, 85.50
+	Entity's Block location: World: (124,70,85), Chunk: (at 12,4,5 in 7,5; contains blocks 112,0,80 to 127,255,95), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Entity's Momentum: 0.00, -0.08, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.entity.Entity.saveWithoutId(Entity.java:1407) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.integrated.IntegratedPlayerList.save(IntegratedPlayerList.java:26) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.management.PlayerList.saveAll(PlayerList.java:636) ~[forge:?] {re:classloading}
+	at net.minecraft.server.integrated.IntegratedServer.tickServer(IntegratedServer.java:72) ~[forge:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:642) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:232) ~[forge:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_231] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 913989144 bytes (871 MB) / 1914175488 bytes (1825 MB) up to 3799515136 bytes (3623 MB)
+	CPUs: 12
+	JVM Flags: 2 total; -XX:+IgnoreUnrecognizedVMOptions -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 8.0.9+86+master.3cf110c
+	ModLauncher launch target: fmluserdevclient
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		/mixin-0.8.2.jar mixin PLUGINSERVICE 
+		/eventbus-4.0.0.jar eventbus PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar object_holder_definalize PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar runtime_enum_extender PLUGINSERVICE 
+		/accesstransformers-3.0.1.jar accesstransformer PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar capability_inject_definalize PLUGINSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar runtimedistcleaner PLUGINSERVICE 
+		/mixin-0.8.2.jar mixin TRANSFORMATIONSERVICE 
+		/forge-1.16.5-36.2.0_mapped_official_1.16.5-launcher.jar fml TRANSFORMATIONSERVICE 
+	FML: 36.2
+	Forge: net.minecraftforge:36.2.0
+	FML Language Providers: 
+		javafml@36.2
+		minecraft@1
+	Mod List: 
+		client-extra.jar                                  |Minecraft                     |minecraft                     |1.16.5              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		forge-1.16.5-36.2.0_mapped_official_1.16.5-recomp.|Forge                         |forge                         |36.2.0              |DONE      |Manifest: NOSIGNATURE
+		main                                              |Fantasia Abilities            |fantasiaabilities             |NONE                |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 2a8b8d49-91cf-477a-903d-8f563008fd47
+	Player Count: 1 / 8; [ServerPlayerEntity['Dev'/272, l='ServerLevel[New World]', x=124.50, y=70.00, z=85.50]]
+	Data Packs: vanilla, mod:forge, mod:fantasiaabilities
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'

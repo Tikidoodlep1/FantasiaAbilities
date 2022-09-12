@@ -1,0 +1,8 @@
+{
+    "type": "fantasiaabilities:passive_luck",
+    "conditions": [
+        {
+            "condition": "minecraft:survives_explosion"
+        }
+    ]
+}
